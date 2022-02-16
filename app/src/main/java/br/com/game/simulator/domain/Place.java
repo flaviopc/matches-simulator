@@ -1,7 +1,11 @@
 package br.com.game.simulator.domain;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Place {
+    @SerializedName("nome")
     private String name;
+    @SerializedName("imagem")
     private String image;
 
     public Place(String name, String image) {

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.game.simulator">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +12,8 @@
         android:theme="@style/Theme.Simulator">
         <activity
             android:name=".ui.DetailActivity"
-            android:theme="@style/Theme.Simulator.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Simulator.NoActionBar" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
