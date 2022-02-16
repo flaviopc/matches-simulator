@@ -1,4 +1,4 @@
-package br.com.game.simulator
+package br.com.game.simulator.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,5 +10,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupMatchesList()
+        setupMatchesRefresh()
+        setupFab()
+    }
+
+    private fun setupFab() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setupMatchesRefresh() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setupMatchesList() {
+        TODO("Not yet implemented")
     }
 }

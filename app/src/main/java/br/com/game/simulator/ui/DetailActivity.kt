@@ -1,4 +1,4 @@
-package br.com.game.simulator
+package br.com.game.simulator.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
