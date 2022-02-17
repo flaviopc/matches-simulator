@@ -15,3 +15,5 @@ A simulação é feita ao pressionar o botão flutuante com desenho de um dado. 
 - **Glide** - carregamento de imagens
 
 - **Retrofit** - acesso a api para carregamento dos dados
+
+- **Firebase** - inclusão do Crashlytics e Analytics
