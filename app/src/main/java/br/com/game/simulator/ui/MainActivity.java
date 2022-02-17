@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -50,37 +52,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupFab() {
-
+        binding.fabSimulate.setOnClickListener(view -> {
+            view.animate().rotationBy(360).setDuration(500).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                }
+            });
+        });
     }
 
     private void setupMatchesRefresh() {
-
+        binding.srlMatches.setOnRefreshListener(this::findMatchesFromApi);
     }
 
     private void setupMatchesList() {
         binding.rvMatches.setHasFixedSize(true);
         binding.rvMatches.setLayoutManager(new LinearLayoutManager(this));
 
+        findMatchesFromApi();
+    }
+
+    private void findMatchesFromApi() {
+        binding.srlMatches.setRefreshing(true);
         matchesAPI.getMatches().enqueue(new Callback<List<Match>>() {
             @Override
             public void onResponse(Call<List<Match>> call, Response<List<Match>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     List<Match> matches = response.body();
                     matchesAdapter = new MatchesAdapter(matches);
                     binding.rvMatches.setAdapter(matchesAdapter);
-                }else{
+                } else {
                     showErrorMessage();
                 }
+                binding.srlMatches.setRefreshing(false);
             }
 
             @Override
             public void onFailure(Call<List<Match>> call, Throwable t) {
                 showErrorMessage();
+                binding.srlMatches.setRefreshing(false);
             }
         });
     }
 
     private void showErrorMessage() {
-        Snackbar.make(binding.getRoot(), R.string.error_api,Snackbar.LENGTH_LONG).show();
+        Snackbar.make(binding.getRoot(), R.string.error_api, Snackbar.LENGTH_LONG).show();
     }
 }
