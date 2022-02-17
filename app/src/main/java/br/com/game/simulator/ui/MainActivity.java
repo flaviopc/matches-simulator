@@ -3,7 +3,6 @@ package br.com.game.simulator.ui;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -12,6 +11,7 @@ import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
+import java.util.Random;
 
 import br.com.game.simulator.R;
 import br.com.game.simulator.data.MatchesAPI;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private MatchesAPI matchesAPI;
-    private RecyclerView.Adapter<MatchesAdapter.ViewHolder> matchesAdapter;
+    private MatchesAdapter matchesAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,9 +57,20 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     super.onAnimationEnd(animation);
+                    simulateMatches();
                 }
             });
         });
+    }
+
+    private void simulateMatches() {
+        Random rand = new Random();
+        for(int i=0;i<matchesAdapter.getItemCount();i++){
+            Match match = matchesAdapter.getMatches().get(i);
+            match.getHomeTeam().setScore(rand.nextInt(match.getHomeTeam().getStars()+1));
+            match.getAwayTeam().setScore(rand.nextInt(match.getAwayTeam().getStars()+1));
+            matchesAdapter.notifyItemChanged(i);
+        }
     }
 
     private void setupMatchesRefresh() {
