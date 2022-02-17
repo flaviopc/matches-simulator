@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "678955034081",
+    "project_id": "simulator-matches-dio",
+    "storage_bucket": "simulator-matches-dio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678955034081:android:e093d9f402cd38b6cb9ea0",
+        "android_client_info": {
+          "package_name": "br.com.game.simulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678955034081-tcbkhcjlt3bn0ql9i394iqvf6edqu3ua.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJGA2wB2KkTevkICmU3CNcuCAlU9Bf4hk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678955034081-tcbkhcjlt3bn0ql9i394iqvf6edqu3ua.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
